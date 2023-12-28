@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700&display=swap');
+
+:root{
+  --title: #011030;
+  --text-color: #8F9396;
+}
+
+*,*::before,*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html{
+  font-family: 'Outfit', sans-serif;
+}
+
+body{
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #F6F8FC;
+  background-image: url('https://fs-prod-cdn.nintendo-europe.com/media/images/08_content_images/games_6/nintendo_switch_7/nswitch_supermariobroswonder/SuperMarioBrosWonder_BG_Kingdom_02.jpg');
+  background-repeat: repeat-y;
+  font-family: 'Outfit', sans-serif;
+  
+  animation: background-move 150s linear infinite;
+}
+
+@keyframes background-move {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+main{
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 10vw 2fr 10vw;
+}
+
+main #root{
+  grid-column: 2/3;
+}
+
+#root{
+  gap: 1.25rem;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 21.875rem;
+}
+
+.mainContent header{
+  margin-block-start: 1.875rem;
+}
+
+.mainContent header label{
+  width: 100%;
+  gap: .625rem;
+  display: flex;
+  align-items: center;
+  border-radius: 1.25rem;
+  border: 1px solid black;
+  padding-inline: .9375rem;
+  padding-block: .9375rem;
+  background-color: #fff;
+  box-shadow: inset 0 -0.3125rem 0 0 rgba(135, 207, 235, 0.7);
+}
+
+.mainContent header input{
+  flex: 1 0;
+  border: none;
+  outline: none;
+  max-width: 100%;
+  font-size: 1.12rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.mainContent header button{
+  width: 2.5rem;
+  color: #fff;
+  display: grid;
+  aspect-ratio: 1/1;
+  place-items: center;
+  background-color: #FF5350;
+  border: none;
+  border-radius: .625rem;
+  cursor: pointer;
+  box-shadow: .125rem .125rem .3125rem rgba(255, 83, 80, 0.555);
+}
+
+.mainContent header button:hover{
+  opacity: .85;
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+
+.pokemons{
+  column-gap: .9375rem;
+  row-gap: 75px;
+  display: grid;
+  padding-block: 6.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(11.875rem, 1fr));
+
+  &:has(:only-child){
+    padding-inline: 25%;
+  }
+}
+
+
+.pokemons .pokemon{
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  min-height: 9.0625rem;
+  border-radius: 1.25rem;
+  color: var(--text-color);
+  background-color: #fff;
+  padding-block-start: 2.8125rem;
+  padding-block-end: .9375rem;
+  outline: 1px solid #4d4d4d;
+  border: 2px solid #fff;
+  filter: drop-shadow(0 10px 10px #EDEDED);
+  transition: border 100ms ease;
+  box-shadow: inset 0 -0.3125rem 0 0 rgba(135, 207, 235, 0.25);
+
+  display: grid;
+
+  &:hover{
+    border: 2px solid #4d4d4d;
+  }
+
+  &:hover img{
+    scale: 1.10;
+  }
+  
+  img{
+    top: 0;
+    display: block;
+    aspect-ratio: 1/1;
+    position: absolute;
+    justify-self: center;
+    transition: all 100ms ease;
+    image-rendering: pixelated;
+    transform: translateY(-55%);
+    transform-origin: center;
+  }
+
+  .number{
+    font-size: .75rem;
+    font-weight: 700;
+    padding-block-end: .625rem;
+  }
+
+  .name{
+    font-weight: 700;
+    font-size: 1.17rem;
+    color: var(--title);
+    text-transform: capitalize;
+    padding-block-end: .9375rem;
+  }
+
+  .row{
+    gap: .625rem;
+    display: flex;
+    font-size: .875rem;
+    justify-content: center;
+  }
+}
+
+.row span{
+  color: #fff;
+  padding: .3125rem;
+  border-radius: .3125rem;
+  padding-block: .1875rem;
+  padding-inline: .4375rem;
+  text-transform: capitalize;
+  background-color: skyblue;
+}
+
+
+/*----------------------------------------------------------------------------*/
+
+
+.detailed-info{
+  --height: 82vh;
+  color: var(--text-color);
+  position: sticky;
+  height: var(--height);
+  border-radius: 1.25rem;
+  top: calc(100vh - var(--height));
+  border: 1px solid black;
+  background-color: #fff;
+  box-shadow: inset .3125rem -0.3125rem 0 0 rgba(135, 207, 235, 0.7),
+              inset -0.3125rem 0 0 0 rgba(135, 207, 235, 0.7);
+
+
+  display: grid;
+  place-content: center;
+
+
+  .empty{
+    text-align: center;
+    font-size: 1.125rem;
+  }
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+
+.row [data-poketype="fire"]{
+  background-color: #ff0000;
+}
+
+.row [data-poketype="water"]{
+  background-color: #0652dd;
+}
+
+.row [data-poketype="grass"]{
+  background-color: #009432;
+}
+
+.row [data-poketype="flying"]{
+  background-color: #82ccdd;
+}
+
+.row [data-poketype="poison"]{
+  background-color: #be2edd;
+}
+
+.row [data-poketype="bug"]{
+  background-color: #6ab04c;
+}
+
+.row [data-poketype="dragon"]{
+  background-color: #40739e;
+}
+
+.row [data-poketype="electric"]{
+  background-color: #ffc312;
+}
+
+.row [data-poketype="normal"]{
+  background-color: #808e9b;
+}
+
+.row [data-poketype="ghost"]{
+  background-color: #6d214f;
+}
+
+.row [data-poketype="ice"]{
+  background-color: #7efff5;
+}
+
+.row [data-poketype="ground"]{
+  background-color: #eab543;
+}
+
+.row [data-poketype="psychic"]{
+  background-color: #fc427b;
+}
+
+.row [data-poketype="fighting"]{
+  background-color: #e15f41;
+}
+
+.row [data-poketype="rock"]{
+  background-color: #3B1E08;
+}
+
+.row [data-poketype="steel"]{
+  background-color: #cad3c8;
+}
+
+.row [data-poketype="dark"]{
+  background-color: #3d3d3d;
+}
